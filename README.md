@@ -27,20 +27,25 @@ A MapReduce job to calculate and report the number of accidents per make & year 
 
 ### Testing
 $ `cat hadoop_mini_data.csv | python mapper1.py | sort` yielded:
+
 <img width="336" alt="Screen Shot 2021-11-11 at 5 14 43 PM" src="https://user-images.githubusercontent.com/65197541/141382287-727ca812-50a5-4fb5-a437-eea3cc22e4cd.png">
 
 **Why use sort?**
 Without using `sort` on the vin key (to mimic MapReduce's shuffle/sort functionality), `cat hadoop_mini_data.csv | python mapper1.py | python reducer1.py | python mapper2.py | python reducer2.py` returns an error:
+
 <img width="746" alt="Screen Shot 2021-11-11 at 5 19 05 PM" src="https://user-images.githubusercontent.com/65197541/141382603-2ce0f5dc-17cd-4207-8a12-378ab122d96b.png">
 
 
 $ `cat hadoop_mini_data.csv | python mapper1.py | sort | python reducer1.py` yielded:
+
 <img width="310" alt="Screen Shot 2021-11-11 at 5 16 14 PM" src="https://user-images.githubusercontent.com/65197541/141382384-21b2bb64-afd8-4364-991d-cf2991f1c72d.png">
 
 $ `cat hadoop_mini_data.csv | python mapper1.py | sort | python reducer1.py | python mapper2.py | sort ` yielded:
+
 <img width="137" alt="Screen Shot 2021-11-11 at 5 17 46 PM" src="https://user-images.githubusercontent.com/65197541/141382500-954ff91a-089a-4927-b5d7-8b191ed3293a.png">
 
 
 $ `cat hadoop_mini_data.csv | python mapper1.py | sort | python reducer1.py | python mapper2.py | sort | python reducer2.py` yielded:
+
 <img width="162" alt="Screen Shot 2021-11-11 at 5 15 34 PM" src="https://user-images.githubusercontent.com/65197541/141382338-6df98a7b-6667-402e-b14a-db3d1bc2bf94.png">
 
