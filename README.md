@@ -4,7 +4,26 @@ A MapReduce job to calculate and report the number of accidents per make & year 
 ## A Quick Hadoop Refresher
 
 ### How to Use
-1. 
+1. Create input & output directoris (if they don't already exist locally) in `hadoop/bin`:
+```
+hadoop fs -mkdir /user/input
+hadoop fs -mkdir /user/output
+```
+2. Put .csv data into input directory
+```
+hadoop fs -put <path to csv>/hadoop_mini_data.csv /user/input
+```
+3. Make sure your data is there:
+ ```
+ hadoop fs -ls /user/input
+ ```
+4. Inspect your data. `hadoop fs -cat /user/input/hadoop_mini_data.csv` should return something like this:
+ 
+<img width="618" alt="Screen Shot 2021-11-11 at 5 33 49 PM" src="https://user-images.githubusercontent.com/65197541/141383753-95938a1f-209f-4a16-80c4-9efd93bf874e.png">
+
+5. Run the MapReduce jobs! `run.sh` file should be in the following format:
+```
+```
 
 ## 🚙🚙 The Data 🚙🚙
 *Stored as a CSV in HDFS*
