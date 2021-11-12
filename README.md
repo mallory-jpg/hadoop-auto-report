@@ -2,6 +2,17 @@
 A MapReduce job to calculate and report the number of accidents per make & year of car, given the car's history.
 
 ## A Quick Hadoop Refresher
+### Basic Commands
+|Command   |Name   |Function |
+|---|---|---|
+|incident_id   |INT   |
+|incident_type   |STRING   |I=inital sale, A=accident, R=repair|
+|vin_number   |STRING   |   |
+|make   |STRING   |Car brand: only populated by incident type 'I'   |
+|model   |STRING   |Car model: only populated by incident type 'I'   |
+|year   |STRING   |Car year: only populated by incident type 'I'   |
+|incident_date   |DATE   |Date of incident occurence   |
+|description   |STRING   |Type of repair ('R'), details of accident ('A'), or from where the car was sold ('I')   |
 
 ### How to Use
 1. Create input & output directoris (if they don't already exist locally) in `hadoop/bin`:
@@ -23,6 +34,15 @@ hadoop fs -put <path to csv>/hadoop_mini_data.csv /user/input
 
 5. Run the MapReduce jobs! `run.sh` file should be in the following format:
 ```
+hadoop jar contrib/streaming/hadoop-streaming-1.2.1.jar \
+    - file mapper1.py - mapper mapper1.py \
+    - file reducer1.py - reducer reducer1.py \
+    - input user/input/hadoop_mini_data.csv - output user/output/all_accidents
+    
+hadoop jar contrib/streaming/hadoop-streaming-1.2.1.jar \
+    -file mapper2.py -mapper mapper2.py \
+    -file reducer2.py -reducer reducer2.py \
+    -input user/output/all_accidents -output output/make_year_count
 ```
 
 ## 🚙🚙 The Data 🚙🚙
