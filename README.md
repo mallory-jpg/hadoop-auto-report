@@ -5,14 +5,14 @@ A MapReduce job to calculate and report the number of accidents per make & year 
 ### Basic Commands
 |Command   |Name   |Function |
 |---|---|---|
-|incident_id   |INT   |
-|incident_type   |STRING   |I=inital sale, A=accident, R=repair|
-|vin_number   |STRING   |   |
-|make   |STRING   |Car brand: only populated by incident type 'I'   |
-|model   |STRING   |Car model: only populated by incident type 'I'   |
-|year   |STRING   |Car year: only populated by incident type 'I'   |
-|incident_date   |DATE   |Date of incident occurence   |
-|description   |STRING   |Type of repair ('R'), details of accident ('A'), or from where the car was sold ('I')   |
+|-ls   |list   |lists files in directory
+|-put   |put   |copy from local file system to Hadoop|
+|-cat   |read request   |initiates read request from NameNode & displays content   |
+|-get   |get   |gets file from HDFS to local sustem   |
+|-mkdir   |make directory   |creates a directory at specified location   |
+|-cp   |copy   |copy file from one directory to another   |
+|sbin/stop-dfs.sh   |stop   |stops local hadoop operations   |
+|sbin/start-dfs.sh   |start   |spins up distributed file system   |
 
 ### How to Use
 1. Create input & output directoris (if they don't already exist locally) in `hadoop/bin`:
